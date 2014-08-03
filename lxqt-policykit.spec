@@ -1,23 +1,38 @@
+%define git 20140803
+
 Name: lxqt-policykit
-Version: 0.7.0
-Release: 3
+Version: 0.8.0
+%if %git
+Release: 0.%git.1
+Source0: %{name}-%{git}.tar.xz
+%else
+Release: 1
 Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
+%endif
+Patch0:	lxqt-policykit-20140803-compile.patch
 Summary: LXQt PolicyKit agent
 URL: http://lxqt.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake
-BuildRequires: cmake(lxqt)
-BuildRequires: qt4-devel
-BuildRequires: polkit-qt-1-devel
+BuildRequires: cmake(lxqt-qt5)
+BuildRequires: qt5-devel
+BuildRequires:	cmake(Qt5LinguistTools)
+BuildRequires:	cmake(Qt5X11Extras)
+BuildRequires:	cmake(PolkitQt5-1)
 
 %description
 LXQt PolicyKit agent
 
 %prep
+%if %git
+%setup -qn %{name}-%{git}
+%else
 %setup -q -c %{name}-%{version}
+%endif
+%apply_patches
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt-1
-%cmake
+%cmake -DUSE_QT5:BOOL=ON
 
 %build
 %make -C build
