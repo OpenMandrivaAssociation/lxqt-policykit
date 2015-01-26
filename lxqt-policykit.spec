@@ -9,7 +9,7 @@ Source0: %{name}-%{git}.tar.xz
 Release: 3
 Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
 %endif
-Patch0:	lxqt-policykit-20140803-compile.patch
+#Patch0:	lxqt-policykit-20140803-compile.patch
 Summary: LXQt PolicyKit agent
 URL: http://lxqt.org/
 License: GPL
