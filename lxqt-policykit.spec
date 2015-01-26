@@ -20,7 +20,6 @@ BuildRequires: qt5-devel
 BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(PolkitQt5-1)
-BuildRequires: pkgconfig(polkit-qt-1)
 Provides:	polkit-agent
 
 %description
@@ -33,8 +32,9 @@ LXQt PolicyKit agent.
 %setup -q
 %endif
 %apply_patches
-export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt-1
-%cmake -DUSE_QT5:BOOL=ON
+
+export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
+%cmake -DUSE_QT5=ON
 
 %build
 %make -C build
