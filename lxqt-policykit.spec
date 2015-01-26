@@ -32,7 +32,7 @@ LXQt PolicyKit agent.
 %setup -q
 %endif
 %apply_patches
-export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt-1
+
 %cmake -DUSE_QT5:BOOL=ON
 
 %build
