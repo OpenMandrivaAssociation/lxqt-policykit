@@ -44,3 +44,4 @@ export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
 
 %files
 %{_bindir}/lxqt-policykit-agent
+%{_datadir}/lxqt/translations/lxqt-policykit-agent
