@@ -1,0 +1,20 @@
+diff -Naur lxqt-policykit-0.9.0/CMakeLists.txt lxqt-policykit-0.9.0.tpg/CMakeLists.txt
+--- lxqt-policykit-0.9.0/CMakeLists.txt	2015-01-19 12:57:00.000000000 +0000
++++ lxqt-policykit-0.9.0.tpg/CMakeLists.txt	2015-02-10 21:14:55.325633623 +0000
+@@ -21,6 +21,7 @@
+ include(${QTXDG_USE_FILE})
+ 
+ include(LXQtTranslate)
++include(GNUInstallDirs)
+ 
+ # Deal with a bug in polkit-qt5
+ if (NOT IS_ABSOLUTE "${POLKITQT-1_INCLUDE_DIR}")
+@@ -92,7 +93,7 @@
+ )
+ 
+ # install
+-install(TARGETS lxqt-policykit-agent DESTINATION bin)
++install(TARGETS lxqt-policykit-agent DESTINATION ${CMAKE_INSTALL_FULL_LIBEXECDIR})
+ 
+ # building tarball with CPack -------------------------------------------------
+ include(InstallRequiredSystemLibraries)
