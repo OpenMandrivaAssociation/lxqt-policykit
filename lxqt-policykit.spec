@@ -9,7 +9,7 @@ Source0: %{name}-%{git}.tar.xz
 Release: 1
 Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
 %endif
-#Patch0:	lxqt-policykit-20140803-compile.patch
+Patch1: lxqt-policykit-0.8.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
 URL: http://lxqt.org/
 License: GPL
@@ -34,7 +34,7 @@ LXQt PolicyKit agent.
 %apply_patches
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
-%cmake -DUSE_QT5=ON
+%cmake -DUSE_QT5=ON -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir}
 
 %build
 %make -C build
@@ -42,6 +42,7 @@ export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
 %install
 %makeinstall_std -C build
 
-%files
-%{_bindir}/lxqt-policykit-agent
-%{_datadir}/lxqt/translations/lxqt-policykit-agent
+%find_lang %{name}-agent --with-qt
+
+%files -f %{name}-agent.lang
+%{_libexecdir}/lxqt-policykit-agent
