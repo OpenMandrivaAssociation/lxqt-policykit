@@ -6,7 +6,7 @@ Version: 0.9.0
 Release: 0.%git.1
 Source0: %{name}-%{git}.tar.xz
 %else
-Release: 1
+Release: 2
 Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
 %endif
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
@@ -15,8 +15,10 @@ URL: http://lxqt.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake
+BuildRequires: qmake5
+BuildRequires: cmake(qt5xdg)
 BuildRequires: cmake(lxqt)
-BuildRequires: qt5-devel
+BuildRequires: cmake(Qt5Widgets)
 BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(PolkitQt5-1)
@@ -34,7 +36,7 @@ LXQt PolicyKit agent.
 %apply_patches
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
-%cmake -DUSE_QT5=ON -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir}
+%cmake -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir}
 
 %build
 %make -C build
