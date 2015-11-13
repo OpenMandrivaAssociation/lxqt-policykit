@@ -1,13 +1,13 @@
 %define git 0
 
 Name: lxqt-policykit
-Version: 0.9.0
+Version: 0.10.0
 %if %git
 Release: 0.%git.1
 Source0: %{name}-%{git}.tar.xz
 %else
-Release: 3
-Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
+Release: 1
+Source0: https://github.com/lxde/%{name}/archive/%{version}.tar.gz
 %endif
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
