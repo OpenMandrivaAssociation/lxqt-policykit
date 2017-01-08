@@ -1,7 +1,7 @@
 %define git 0
 
 Name: lxqt-policykit
-Version: 0.11.0
+Version: 0.11.1
 %if %git
 Release: 1.%git.1
 Source0: %{name}-%{git}.tar.xz
