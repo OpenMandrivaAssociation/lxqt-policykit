@@ -1,13 +1,13 @@
 %define git 0
 
 Name: lxqt-policykit
-Version: 0.11.1
+Version: 0.12.0
 %if %git
-Release: 1.%git.1
+Release: 0.%git.1
 Source0: %{name}-%{git}.tar.xz
 %else
 Release: 1
-Source0: https://github.com/lxde/%{name}/archive/%{name}-%{version}.tar.xz
+Source0: https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
 %endif
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
@@ -23,6 +23,7 @@ BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(PolkitQt5-1)
 Provides:	polkit-agent
+BuildRequires:	lxqt-build-tools git-core
 
 %description
 LXQt PolicyKit agent.
@@ -48,3 +49,4 @@ export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
 
 %files -f %{name}-agent.lang
 %{_libexecdir}/lxqt-policykit-agent
+%{_sysconfdir}/xdg/qt5/autostart/lxqt-policykit-agent.desktop
