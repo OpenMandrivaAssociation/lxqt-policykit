@@ -17,14 +17,15 @@ Group: Graphical desktop/KDE
 Patch0: lxqt-policykit-0.12.0-fix-path-lxqt-policykit-agent.patch
 BuildRequires: cmake
 BuildRequires: qmake5
+BuildRequires: ninja
 BuildRequires: cmake(qt5xdg)
 BuildRequires: cmake(lxqt)
 BuildRequires: cmake(Qt5Widgets)
 BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(PolkitQt5-1)
-BuildRequires:	cmake(lxqt-build-tools)
-Provides:	polkit-agent
+BuildRequires: cmake(lxqt-build-tools)
+Provides: polkit-agent
 
 %description
 LXQt PolicyKit agent.
