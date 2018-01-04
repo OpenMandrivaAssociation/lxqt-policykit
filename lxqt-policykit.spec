@@ -25,6 +25,7 @@ BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(PolkitQt5-1)
 BuildRequires: cmake(lxqt-build-tools)
+BuildRequires: git-core
 Provides: polkit-agent
 
 %description
@@ -39,7 +40,7 @@ LXQt PolicyKit agent.
 %apply_patches
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
-%cmake_qt5 -DPULL_TRANSLATIONS=NO -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
+%cmake_qt5 -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
