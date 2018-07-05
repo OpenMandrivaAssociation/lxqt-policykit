@@ -40,7 +40,7 @@ LXQt PolicyKit agent.
 %apply_patches
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
-%cmake_qt5 -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
+%cmake_qt5 -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
@@ -58,8 +58,6 @@ export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 %ninja_install -C build
 
-%find_lang %{name}-agent --with-qt
-
-%files -f %{name}-agent.lang
+%files
 %{_libexecdir}/lxqt-policykit-agent
 %{_sysconfdir}/xdg/autostart/lxqt-policykit-agent.desktop
