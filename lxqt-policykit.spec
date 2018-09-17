@@ -24,8 +24,8 @@ BuildRequires: cmake(Qt5Widgets)
 BuildRequires: cmake(Qt5LinguistTools)
 BuildRequires: cmake(Qt5X11Extras)
 BuildRequires: cmake(PolkitQt5-1)
+BuildRequires: pkgconfig(polkit-agent-1)
 BuildRequires: cmake(lxqt-build-tools)
-BuildRequires: git-core
 Provides: polkit-agent
 
 %description
