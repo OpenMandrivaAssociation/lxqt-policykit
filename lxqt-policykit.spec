@@ -37,7 +37,7 @@ LXQt PolicyKit agent.
 %else
 %setup -q
 %endif
-%apply_patches
+%autopatch -p1
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
 %cmake_qt5 -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
