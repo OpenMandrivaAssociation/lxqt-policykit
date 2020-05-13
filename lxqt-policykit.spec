@@ -1,13 +1,13 @@
 %define git 0
 
 Name: lxqt-policykit
-Version: 0.14.1
+Version: 0.15.0
 %if %git
 Release: 0.%git.1
 Source0: %{name}-%{git}.tar.xz
 %else
-Release: 2
-Source0: https://downloads.lxqt.org/downloads/%{name}/%{version}/%{name}-%{version}.tar.xz
+Release: 1
+Source0: https://github.com/lxqt/lxqt-policykit/releases/download/%{version}/lxqt-policykit-%{version}.tar.xz
 %endif
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
@@ -33,11 +33,10 @@ LXQt PolicyKit agent.
 
 %prep
 %if %git
-%setup -qn %{name}-%{git}
+%autosetup -p1 -n %{name}-%{git}
 %else
-%setup -q
+%autosetup -p1
 %endif
-%autopatch -p1
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
 %cmake_qt5 -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
@@ -63,3 +62,5 @@ export LC_ALL=en_US.utf-8
 %{_libexecdir}/lxqt-policykit-agent
 %{_sysconfdir}/xdg/autostart/lxqt-policykit-agent.desktop
 %{_mandir}/man1/*.1*
+%lang(arn) %{_datadir}/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_arn.qm
+%lang(ast) %{_datadir}/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_ast.qm
