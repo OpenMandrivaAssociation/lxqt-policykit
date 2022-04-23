@@ -1,9 +1,9 @@
 %define git 0
 
 Name: lxqt-policykit
-Version: 1.0.0
+Version: 1.1.0
 %if %git
-Release: 0.%git.1
+Release: 1.%git.1
 Source0: %{name}-%{git}.tar.xz
 %else
 Release: 1
@@ -62,5 +62,4 @@ export LC_ALL=en_US.utf-8
 %{_libexecdir}/lxqt-policykit-agent
 %{_sysconfdir}/xdg/autostart/lxqt-policykit-agent.desktop
 %{_mandir}/man1/*.1*
-%lang(arn) %{_datadir}/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_arn.qm
-%lang(ast) %{_datadir}/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_ast.qm
+%dir %{_datadir}/lxqt/translations/lxqt-policykit-agent
