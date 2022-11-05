@@ -1,6 +1,6 @@
-diff -up lxqt-policykit-1.1.0/CMakeLists.txt.1~ lxqt-policykit-1.1.0/CMakeLists.txt
---- lxqt-policykit-1.1.0/CMakeLists.txt.1~	2022-04-23 19:20:11.398839287 +0200
-+++ lxqt-policykit-1.1.0/CMakeLists.txt	2022-04-23 19:21:22.119150810 +0200
+diff -up lxqt-policykit-1.2.0/CMakeLists.txt.1~ lxqt-policykit-1.2.0/CMakeLists.txt
+--- lxqt-policykit-1.2.0/CMakeLists.txt.1~	2022-11-05 18:50:47.514218461 +0100
++++ lxqt-policykit-1.2.0/CMakeLists.txt	2022-11-05 18:53:50.448602662 +0100
 @@ -19,7 +19,7 @@ find_package(PkgConfig)
  pkg_check_modules(POLKIT_AGENT REQUIRED polkit-agent-1)
  message(STATUS "polkit agent: ${POLKIT_AGENT_INCLUDE_DIRS} ${POLKIT_AGENT_LIBRARIES}")
@@ -9,4 +9,4 @@ diff -up lxqt-policykit-1.1.0/CMakeLists.txt.1~ lxqt-policykit-1.1.0/CMakeLists.
 +set(POLKIT_AGENT_BINARY_DIR "${CMAKE_INSTALL_FULL_LIBEXECDIR}" CACHE FILEPATH "Directory for install polkit agent")
  
  # Minumum Versions
- set(LXQT_MINIMUM_VERSION "1.1.0")
+ set(LXQT_MINIMUM_VERSION "1.2.0")
