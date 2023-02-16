@@ -6,7 +6,7 @@ Version: 1.2.0
 Release: 1.%git.1
 Source0: %{name}-%{git}.tar.xz
 %else
-Release: 1
+Release: 2
 Source0: https://github.com/lxqt/lxqt-policykit/releases/download/%{version}/lxqt-policykit-%{version}.tar.xz
 %endif
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
