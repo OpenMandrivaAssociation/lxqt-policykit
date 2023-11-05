@@ -1,14 +1,13 @@
-%define git 0
+#define git 0
 
 Name: lxqt-policykit
 Version: 1.4.0
-%if %git
-Release: 1.%git.1
+%if 0%{?git:1}
 Source0: %{name}-%{git}.tar.xz
 %else
-Release: 1
 Source0: https://github.com/lxqt/lxqt-policykit/releases/download/%{version}/lxqt-policykit-%{version}.tar.xz
 %endif
+Release: %{?git:0.%{git}.}1
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
 URL: http://lxqt.org/
@@ -32,11 +31,7 @@ Provides: polkit-agent
 LXQt PolicyKit agent.
 
 %prep
-%if %git
-%autosetup -p1 -n %{name}-%{git}
-%else
-%autosetup -p1
-%endif
+%autosetup -p1 -n %{name}-%{?git:%{git}}%{!?git:%{version}}
 
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
 %cmake_qt5 -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
