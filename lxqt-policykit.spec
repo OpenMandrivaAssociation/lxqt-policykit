@@ -1,7 +1,7 @@
 #define git 0
 
 Name: lxqt-policykit
-Version: 1.4.0
+Version: 2.0.0
 %if 0%{?git:1}
 Source0: %{name}-%{git}.tar.xz
 %else
@@ -15,16 +15,14 @@ License: GPL
 Group: Graphical desktop/KDE
 Patch0: lxqt-policykit-0.12.0-fix-path-lxqt-policykit-agent.patch
 BuildRequires: cmake
-BuildRequires: qmake5
 BuildRequires: ninja
-BuildRequires: cmake(qt5xdg)
+BuildRequires: cmake(qt6xdg)
 BuildRequires: cmake(lxqt)
-BuildRequires: cmake(Qt5Widgets)
-BuildRequires: cmake(Qt5LinguistTools)
-BuildRequires: cmake(Qt5X11Extras)
-BuildRequires: cmake(PolkitQt5-1)
+BuildRequires: cmake(Qt6Widgets)
+BuildRequires: cmake(Qt6LinguistTools)
+BuildRequires: cmake(PolkitQt6-1)
 BuildRequires: pkgconfig(polkit-agent-1)
-BuildRequires: cmake(lxqt-build-tools)
+BuildRequires: cmake(lxqt2-build-tools)
 Provides: polkit-agent
 
 %description
@@ -33,8 +31,8 @@ LXQt PolicyKit agent.
 %prep
 %autosetup -p1 -n %{name}-%{?git:%{git}}%{!?git:%{version}}
 
-export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt5-1
-%cmake_qt5 -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
+export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt6-1
+%cmake -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
 
 %build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
