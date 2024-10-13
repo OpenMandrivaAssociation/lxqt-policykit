@@ -7,7 +7,7 @@ Source0: %{name}-%{git}.tar.xz
 %else
 Source0: https://github.com/lxqt/lxqt-policykit/releases/download/%{version}/lxqt-policykit-%{version}.tar.xz
 %endif
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
 URL: http://lxqt.org/
