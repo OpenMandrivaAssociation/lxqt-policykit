@@ -10,7 +10,7 @@ Source0: https://github.com/lxqt/lxqt-policykit/releases/download/%{version}/lxq
 Release: %{?git:0.%{git}.}2
 Patch1: lxqt-policykit-0.9.0-cmake-libexec.patch
 Summary: LXQt PolicyKit agent
-URL: http://lxqt.org/
+URL: https://lxqt.org/
 License: GPL
 Group: Graphical desktop/KDE
 Patch0: lxqt-policykit-0.12.0-fix-path-lxqt-policykit-agent.patch
