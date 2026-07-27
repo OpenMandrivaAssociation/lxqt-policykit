@@ -31,10 +31,9 @@ LXQt PolicyKit agent.
 %prep
 %autosetup -p1 -n %{name}-%{?git:%{git}}%{!?git:%{version}}
 
+%build
 export CMAKE_PREFIX_PATH=%{_libdir}/cmake/PolkitQt6-1
 %cmake -DPULL_TRANSLATIONS:BOOL=OFF -DPOLKIT_AGENT_BINARY_DIR=%{_libexecdir} -G Ninja
-
-%build
 # Need to be in a UTF-8 locale so grep (used by the desktop file
 # translation generator) doesn't scream about translations containing
 # "binary" (non-ascii) characters
